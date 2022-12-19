@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { QuizInterface } from 'src/app/commons/interfaces/quiz.interface';
-import { RestService } from 'src/app/rest.service';
+import {QuizRestService} from "../quiz-rest.service";
 
 const hoy = new Date();
 const month = hoy.getMonth();
@@ -32,7 +32,7 @@ export class CrearQuizComponent implements OnInit {
     { textoPregunta: 'Como te llamas', ponderacion: 12.5 },
   ];
 
-  constructor(private restService: RestService, private router: Router) {}
+  constructor(private restService: QuizRestService, private router: Router) {}
 
   ngOnInit() {}
 
