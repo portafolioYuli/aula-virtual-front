@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,9 +8,12 @@ import { QuizModule } from './modules/quiz/quiz.module';
 import { PruebaModule } from './modules/prueba/prueba.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { IndexComponent } from './commons/components/index/index.component';
+import { PageNotFoundComponent } from './commons/components/page-not-found/page-not-found.component';
+import {MaterialModule} from "./commons/modules/material.module";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, IndexComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,8 +22,10 @@ import { HttpClient } from '@angular/common/http';
     PruebaModule,
     ReactiveFormsModule,
     FormsModule,
+    MaterialModule
   ],
   providers: [HttpClient],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
