@@ -1,3 +1,142 @@
-<p>
-  crear-quiz works!
-</p>
+<div class="grid">
+  <div class="col-12">
+    <h1 class="centrado">Crear Quiz</h1>
+  </div>
+</div>
+<form class="formulario" [formGroup]="quizForm" (submit)="onEnviar()">
+  <div class="grid">
+    <div class="col-12">
+      <mat-form-field class="actividad">
+        <mat-label>Nombre de la actividad</mat-label>
+        <input
+          required
+          matInput
+          placeholder="Ej. Quiz Programacion"
+          formControlName="nombre"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha y hora de inicio</mat-label>
+        <input
+          matInput
+          type="datetime-local"
+          placeholder="start date"
+          formControlName="start"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha y hora fin</mat-label>
+        <input
+          matInput
+          type="datetime-local"
+          placeholder="end date"
+          formControlName="end"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="col-3">
+      <mat-form-field class="example-full-width">
+        <mat-label>Duracion de la actividad en min</mat-label>
+        <input
+          required
+          type="number"
+          minlength="2"
+          maxlength="4"
+          matInput
+          placeholder="Ej. 20"
+          formControlName="duracion"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-12">
+      <h1 class="centrado">Preguntas</h1>
+    </div>
+  </div>
+
+  <div
+    class="pregunta"
+    *ngFor="let pregunta of preguntas; let position = index"
+  >
+    <div class="grid">
+      <div class="col-8">
+        <mat-form-field class="example-full-width">
+          <mat-label>Pregunta</mat-label>
+          <input
+            required
+            matInput
+            placeholder="Ej. ¿Con cuántos países comparte Colombia fronteras terrestres?"
+            [value]="position + ' - ' + pregunta.textoPregunta"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field class="example-full-width">
+          <mat-label>ponderacion</mat-label>
+          <input
+            required
+            type="number"
+            matInput
+            placeholder="Ej. 1"
+            [value]="pregunta.ponderacion"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-1">
+        <button
+          (click)="eliminarPregunta(position)"
+          mat-fab
+          color="primary"
+          aria-label="Example icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <section class="botones">
+    <div class="grid">
+      <div class="col-1">
+        <button (click)="agregarPregunta()" mat-raised-button color="black">
+          Agregar Pregunta
+        </button>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-10">
+        {{ quizForm.controls.nombre.invalid }}
+        {{ quizForm.controls.start.invalid }}
+        {{ quizForm.controls.end.invalid }}
+        {{ quizForm.controls.duracion.invalid }}
+
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="onCancelar()"
+          value="borar"
+        >
+          cancelar
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="quizForm.invalid"
+          type="submit"
+          value="guardar"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </section>
+</form>
