@@ -1,5 +1,35 @@
 <div class="grid">
   <div class="col-12">
+    <button mat-button [matMenuTriggerFor]="aboveMenu">
+      Listar ACtividades
+    </button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+      <button mat-menu-item>Quices</button>
+      <button mat-menu-item>Talleres</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-12">
     <h1 class="centrado">Crear Quiz</h1>
   </div>
 </div>
@@ -21,7 +51,7 @@
   <div class="grid">
     <div class="col-3">
       <mat-form-field appearance="fill">
-        <mat-label>Fecha y hora de inicio</mat-label>
+        <mat-label>Fecha y hora de aperura</mat-label>
         <input
           matInput
           type="datetime-local"
@@ -32,7 +62,7 @@
     </div>
     <div class="col-3">
       <mat-form-field appearance="fill">
-        <mat-label>Fecha y hora fin</mat-label>
+        <mat-label>Fecha y hora de cierre</mat-label>
         <input
           matInput
           type="datetime-local"

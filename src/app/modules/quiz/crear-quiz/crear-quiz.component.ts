@@ -28,9 +28,7 @@ export class CrearQuizComponent implements OnInit {
     duracion: new FormControl(0, [Validators.required]),
   });
 
-  preguntas: Pregunta[] = [
-    { textoPregunta: 'Como te llamas', ponderacion: 12.5 },
-  ];
+  preguntas: Pregunta[] = [{ textoPregunta: '', ponderacion: 1 }];
 
   constructor(private restService: RestService, private router: Router) {}
 
@@ -51,7 +49,10 @@ export class CrearQuizComponent implements OnInit {
       console.log(data);
     });
   }
-  onCancelar() {}
+
+  onCancelar() {
+    this.quizForm.reset();
+  }
 
   eliminarPregunta(position: number) {
     this.preguntas.splice(position, 1);
@@ -60,4 +61,7 @@ export class CrearQuizComponent implements OnInit {
   agregarPregunta() {
     this.preguntas.push({ textoPregunta: ' ', ponderacion: 0 });
   }
+}
+function explode(arg0: string, fecha: any) {
+  throw new Error('Function not implemented.');
 }
