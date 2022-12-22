@@ -1,0 +1,48 @@
+$negro: #444444;
+$naranja-positiva: #0f9bb6;
+$ui-primary: #3d4e5a;
+$gris-fondo: #f3f3f4;
+$blanco: #fafafa;
+$borde-gris: #ddd;
+
+#aula-page {
+  display: flex;
+  height: 100%;
+  flex-flow: column;
+}
+#aula-header {
+  width: 100%;
+  height: 85px;
+  background: $naranja-positiva;
+  -webkit-box-shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.1),
+  0 2px 49px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.1),
+  0 2px 49px 0 rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 1;
+}
+#aula-header-logo {
+  text-align: center;
+}
+#aula-menu {
+  width: 17%;
+  background: #fff;
+  border-right: 1px solid $borde-gris;
+  -webkit-box-shadow: 0px 0 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0 10px 0 rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#aula-body {
+  width: 83%;
+  padding: 20px 20px 150px 20px;
+  background: $gris-fondo;
+  box-sizing: border-box;
+}
+#aula-content {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  background: $gris-fondo;
+}

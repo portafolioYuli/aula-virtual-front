@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CrearQuizComponent } from './crear-quiz/crear-quiz.component';
 import { ListadoQuicesComponent } from './listado-quices/listado-quices.component';
@@ -11,8 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { MatMenuModule } from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
+import { QuizRoutingModule } from './quiz-routing.module';
+import { MaterialModule } from '../../commons/modules/material.module';
 
 @NgModule({
   imports: [
@@ -27,10 +28,12 @@ import { MatMenuModule } from '@angular/material/menu';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MatMenuModule,
+
+    CommonModule,
+    QuizRoutingModule,
+    MaterialModule,
   ],
   declarations: [CrearQuizComponent, ListadoQuicesComponent],
-
   exports: [CrearQuizComponent, ListadoQuicesComponent],
   providers: [QuizRestService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
