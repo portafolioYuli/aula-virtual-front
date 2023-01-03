@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ListadoQuicesComponent} from "./listado-quices/listado-quices.component";
-import {CrearQuizComponent} from "./crear-quiz/crear-quiz.component";
-
+import { ListadoQuicesComponent } from './listado-quices/listado-quices.component';
+import { CrearQuizComponent } from './crear-quiz/crear-quiz.component';
 
 const routes: Routes = [
   { path: '', component: ListadoQuicesComponent },
@@ -11,6 +10,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class QuizRoutingModule { }
+export class QuizRoutingModule {}

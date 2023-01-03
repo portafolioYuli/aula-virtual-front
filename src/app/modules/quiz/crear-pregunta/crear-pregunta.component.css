@@ -1,0 +1,26 @@
+.centrado {
+  text-align: center;
+  padding: 10px;
+}
+
+.formulario{
+  width: 97%;
+  padding: 4px;
+  margin: auto;
+  min-width: 450px;
+  max-height: 450px;
+}
+
+cdk-virtual-scroll-viewport{
+  height: 100px;
+  overflow-y: scroll;
+  width: 100px;
+}
+
+.example-form-field {
+  margin: 0 8px 16px 0;
+}
+
+.botones {
+  text-align:right;
+}

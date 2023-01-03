@@ -1,0 +1,16 @@
+<h2 mat-dialog-title *ngIf="data.tipo == 'error'" [ngClass]="data.tipo">
+  Error!
+</h2>
+<h2 mat-dialog-title *ngIf="data.tipo == 'info'" [ngClass]="data.tipo">
+  Información!!
+</h2>
+<h2 mat-dialog-title *ngIf="data.tipo == 'success'" [ngClass]="data.tipo">
+  Exito!!
+</h2>
+<h2 mat-dialog-title *ngIf="data.tipo == 'warn'" [ngClass]="data.tipo">
+  Advertencia!
+</h2>
+
+<div mat-dialog-content>{{ data.mensaje }}</div>
+
+<button mat-mini-fab (click)="ok()" type="button">ok</button>
