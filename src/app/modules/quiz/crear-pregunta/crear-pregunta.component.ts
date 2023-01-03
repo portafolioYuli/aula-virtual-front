@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { preguntaInterface } from 'src/app/commons/interfaces/quiz.interface';
+import { PreguntaInterface } from 'src/app/commons/interfaces/quiz.interface';
 import { MessageComponent } from 'src/app/commons/components/message/message.component';
 import { QuizRestService } from '../quiz-rest.service';
 import { Router } from '@angular/router';
@@ -45,7 +45,7 @@ export class CrearPreguntaComponent implements OnInit {
 
   onEnviar() {
     console.log('Estoy enviando el form');
-    let pregunta: preguntaInterface = <preguntaInterface>{
+    let pregunta: PreguntaInterface = <PreguntaInterface>{
       nombre: this.preguntaForm.value.nombre!,
       ponderacion: this.preguntaForm.value.ponderacion!,
       idUsuario: 1,

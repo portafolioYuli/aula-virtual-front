@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import {
   QuizInterface,
-  preguntaInterface,
+  PreguntaInterface,
 } from '../../commons/interfaces/quiz.interface';
 
 @Injectable({
@@ -27,7 +27,7 @@ export class QuizRestService {
 
   guardarPregunta(
     idActividad: number,
-    preguntas: preguntaInterface
+    preguntas: PreguntaInterface
   ): Observable<any> {
     console.log(idActividad);
     return this.http.post(

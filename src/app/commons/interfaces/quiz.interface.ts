@@ -9,10 +9,10 @@ export interface QuizInterface {
   fecha_actualizacion?: any;
   usuario: UsuarioUsuario;
   descripcion: string;
-  preguntas: preguntaInterface[];
+  preguntas: PreguntaInterface[];
 }
 
-export interface preguntaInterface {
+export interface PreguntaInterface {
   nombre: string;
   ponderacion: number;
   idUsuario: number;
