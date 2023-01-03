@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizRestService } from '../quiz-rest.service';
-import {QuizInterface} from "../../../commons/interfaces/quiz.interface";
+import { QuizInterface } from '../../../commons/interfaces/quiz.interface';
+import { MessageComponent } from 'src/app/commons/components/message/message.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.component';
 
 @Component({
   selector: 'app-listado-quices',
@@ -8,18 +11,40 @@ import {QuizInterface} from "../../../commons/interfaces/quiz.interface";
   styleUrls: ['./listado-quices.component.css'],
 })
 export class ListadoQuicesComponent implements OnInit {
+  displayedColumns: string[] = [
+    'id',
+    'nombre',
+    'fecha_apertura',
+    'fecha_cierre',
+    'duracion',
+    'tipo',
+    'opciones',
+    'numPreguntas',
+  ];
+  quicesDataSource: QuizInterface[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'fecha_apertura', 'fecha_cierre','opciones'];
-  quicesDataSource:QuizInterface[] = [];
-
-  constructor(private service: QuizRestService) {}
+  constructor(private service: QuizRestService, public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.service.listarQuices().subscribe((data:QuizInterface []) => {
-        this.quicesDataSource=data;
+    this.service.listarQuices().subscribe((data: QuizInterface[]) => {
+      this.quicesDataSource = data;
+    });
+  }
+  deleteActividad(idActividad: number): void {
+    this.service
+      .eliminarActividad(idActividad)
+      .subscribe((data: QuizInterface[]) => {
+        this.quicesDataSource = data;
+        this.ngOnInit();
+      });
+  }
+
+  createPregunta(idActividad: number) {
+    console.log(idActividad);
+    this.dialog.open(CrearPreguntaComponent, {
+      data: {
+        idActividad: idActividad,
+      },
     });
   }
 }
-
-
-

@@ -1,16 +1,21 @@
-
 export interface QuizInterface {
-	id: number;
-	nombre: string;
-	fecha_apertura: string;
-	fecha_cierre: string;
-	duracion: number;
-	ponderacion: number;
-	tipo: string;
-	fecha_creacion: string;
-	fecha_actualizacion?: any;
-	usuario: UsuarioUsuario;
-	preguntas: any[];
+  id: number;
+  nombre: string;
+  fecha_apertura: string;
+  fecha_cierre: string;
+  duracion: number;
+  tipo: string;
+  fecha_creacion: string;
+  fecha_actualizacion?: any;
+  usuario: UsuarioUsuario;
+  descripcion: string;
+  preguntas: PreguntaInterface[];
+}
+
+export interface PreguntaInterface {
+  nombre: string;
+  ponderacion: number;
+  idUsuario: number;
 }
 
 export interface UsuarioUsuario {
