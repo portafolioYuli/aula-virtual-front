@@ -76,21 +76,9 @@ export class CrearPreguntaComponent implements OnInit {
   }
 
   agregarPregunta() {
-    //let index = this.preguntas.length;
-    //let ultimaPregunta = this.preguntas[index - 1];
-
     if (this.preguntas.length === 0) {
       this.preguntas.push({ textoPregunta: '', ponderacion: 0 });
-    }
-
-    //console.log(ultimaPregunta);
-    /*if (
-      ultimaPregunta.textoPregunta == '' ||
-      ultimaPregunta.ponderacion === 0
-    ) {
-      alert('para agregar otra pregunta el campo debe estar diligenciado');
-    }*/
-    else {
+    } else {
       this.preguntas.push({ textoPregunta: '', ponderacion: 0 });
     }
   }
@@ -110,5 +98,9 @@ export class CrearPreguntaComponent implements OnInit {
         tipo: 'error',
       },
     });
+  }
+
+  cerrar(): void {
+    this.dialog.closeAll();
   }
 }

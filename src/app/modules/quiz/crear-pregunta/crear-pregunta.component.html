@@ -1,3 +1,10 @@
+<div class="grid">
+  <div class="col-12" align="right">
+    <button mat-mini-fab color="warn" type="button" (click)="cerrar()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
 <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
   <div class="grid">
     <div class="col-12">
@@ -82,14 +89,6 @@
             value="guardar"
           >
             Guardar
-          </button>
-          <button
-            mat-raised-button
-            color="primary"
-            type="button"
-            (click)="createPregunta()"
-          >
-            prueba
           </button>
         </div>
       </div>
