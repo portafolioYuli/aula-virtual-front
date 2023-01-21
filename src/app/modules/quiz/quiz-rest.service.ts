@@ -21,6 +21,10 @@ export class QuizRestService {
     return this.http.post(`${environment.backendUrl}/actividad`, quiz);
   }
 
+  verActividad(id: number): Observable<any> {
+    return this.http.get(`${environment.backendUrl}/actividad/${id}`);
+  }
+
   eliminarActividad(id: number): Observable<any> {
     return this.http.delete(`${environment.backendUrl}/actividad/${id}`);
   }

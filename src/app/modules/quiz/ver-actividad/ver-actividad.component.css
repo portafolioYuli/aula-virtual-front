@@ -1,0 +1,24 @@
+.example-full-width {
+  width: 100%;
+}
+
+.boton {
+  top: -20px;
+}
+
+.mat-card-actions-align-end {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.encabezado{
+  display: inline-block;
+}
+.contenido{
+  display: inline-block;
+}
+
+.example-card{
+  width: 100%;
+}

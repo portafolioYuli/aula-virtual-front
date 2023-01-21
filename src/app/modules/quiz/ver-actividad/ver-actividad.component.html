@@ -1,0 +1,36 @@
+<mat-card-actions class="boton" align="end">
+  <button mat-mini-fab (click)="ok()" type="button" color="warn">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-card-actions>
+
+<mat-card class="example-card">
+  <mat-card-header class="encabezado">
+    <mat-card-title>{{ quizActual?.nombre }}</mat-card-title>
+    <mat-card-subtitle
+      >creado:
+      {{
+        quizActual?.fecha_creacion | date : "yyyy-dd-mm hh:mm:ss"
+      }}</mat-card-subtitle
+    >
+    <mat-card-subtitle>por: {{ quizActual?.usuario }} </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="contenido">
+    <p>Descripcion de la actividad: {{ quizActual?.descripcion }}</p>
+    <p>
+      Fecha de apertura:
+      {{ quizActual?.fecha_apertura | date : "yyyy-dd-mm hh:mm:ss" }}
+    </p>
+    <p>
+      Fecha de cierre:
+      {{ quizActual?.fecha_cierre | date : "yyyy-dd-mm hh:mm:ss" }}
+    </p>
+    <p>tipo: {{ quizActual?.tipo }}</p>
+    <p>Duracion de la actividad: {{ quizActual?.duracion }}</p>
+  </mat-card-content>
+
+  <mat-card-content>
+    <p>Preguntas: {{ quizActual?.preguntas }}</p>
+  </mat-card-content>
+</mat-card>

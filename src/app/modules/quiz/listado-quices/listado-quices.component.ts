@@ -4,6 +4,7 @@ import { QuizInterface } from '../../../commons/interfaces/quiz.interface';
 import { MessageComponent } from 'src/app/commons/components/message/message.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.component';
+import { VerActividadComponent } from '../ver-actividad/ver-actividad.component';
 
 @Component({
   selector: 'app-listado-quices',
@@ -30,6 +31,15 @@ export class ListadoQuicesComponent implements OnInit {
       this.quicesDataSource = data;
     });
   }
+
+  verActividad(idActividad: number): void {
+    this.dialog.open(VerActividadComponent, {
+      data: {
+        idActividad: idActividad,
+      },
+    });
+  }
+
   deleteActividad(idActividad: number): void {
     this.service
       .eliminarActividad(idActividad)
