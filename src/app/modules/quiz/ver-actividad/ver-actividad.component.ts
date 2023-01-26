@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { QuizInterface } from 'src/app/commons/interfaces/quiz.interface';
 import { QuizRestService } from '../quiz-rest.service';
-import { UsuarioUsuario } from '../../../commons/interfaces/quiz.interface';
 import { PreguntaInterface } from 'src/app/commons/interfaces/quiz.interface';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
@@ -11,30 +10,10 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   styleUrls: ['./ver-actividad.component.css'],
 })
 export class VerActividadComponent implements OnInit {
-  displayUsuario: string[] = [
-    'id',
-    'nombre',
-    'apellido',
-    'correo',
-    'fecha_ingreso',
-    'activo',
-  ];
-
-  displayedColumns: string[] = [
-    'id',
-    'nombre',
-    'fecha_apertura',
-    'fecha_cierre',
-    'duracion',
-    'tipo',
-  ];
-
-  displayPreguntas: string[] = ['nombre', 'ponderacion', 'idUsiario'];
+  displayPreguntas: string[] = ['nombre', 'ponderacion'];
   quizActual: QuizInterface | undefined;
 
-  quicesDataSource: QuizInterface[] = [];
-  preguntaDataSource: PreguntaInterface[] = [];
-  usuarioDataSource: UsuarioUsuario[] = [];
+  preguntasDataSource: PreguntaInterface[] = [];
   idActividad: number = 0;
   constructor(
     private service: QuizRestService,
@@ -52,11 +31,11 @@ export class VerActividadComponent implements OnInit {
     this.service
       .verActividad(this.idActividad)
       .subscribe((data: QuizInterface) => {
-        //console.log(data);
+        console.log(data);
         this.quizActual = data;
-        this.quicesDataSource = [data];
+        this.preguntasDataSource = data.preguntas;
 
-        //console.table(this.quicesDataSource);
+        console.table(this.preguntasDataSource);
       });
   }
   ok(): void {

@@ -5,32 +5,68 @@
 </mat-card-actions>
 
 <mat-card class="example-card">
-  <mat-card-header class="encabezado">
-    <mat-card-title>{{ quizActual?.nombre }}</mat-card-title>
-    <mat-card-subtitle
-      >creado:
-      {{
-        quizActual?.fecha_creacion | date : "yyyy-dd-mm hh:mm:ss"
-      }}</mat-card-subtitle
-    >
-    <mat-card-subtitle>por: {{ quizActual?.usuario }} </mat-card-subtitle>
-  </mat-card-header>
+  <div class="grid">
+    <div class="col-12" align="center">
+      <mat-card-title>{{ quizActual?.nombre }}</mat-card-title>
+    </div>
+  </div>
 
-  <mat-card-content class="contenido">
-    <p>Descripcion de la actividad: {{ quizActual?.descripcion }}</p>
-    <p>
-      Fecha de apertura:
-      {{ quizActual?.fecha_apertura | date : "yyyy-dd-mm hh:mm:ss" }}
-    </p>
-    <p>
-      Fecha de cierre:
-      {{ quizActual?.fecha_cierre | date : "yyyy-dd-mm hh:mm:ss" }}
-    </p>
-    <p>tipo: {{ quizActual?.tipo }}</p>
-    <p>Duracion de la actividad: {{ quizActual?.duracion }}</p>
+  <div class="grid">
+    <div class="col-6">
+      <p>
+        <b>Creado por:</b>
+        {{ quizActual?.usuario?.nombre }} {{ quizActual?.usuario?.apellido
+        }}<b> el día </b>
+        {{ quizActual?.fecha_creacion | date : "yyyy-dd-mm hh:mm:ss" }}
+      </p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-4">
+      <p>
+        <b>Fecha de apertura:</b>
+        {{ quizActual?.fecha_apertura | date : "yyyy-dd-mm hh:mm:ss" }}
+      </p>
+    </div>
+    <div class="col-4">
+      <p>
+        <b>Fecha de cierre: </b>
+        {{ quizActual?.fecha_cierre | date : "yyyy-dd-mm hh:mm:ss" }}
+      </p>
+    </div>
+    <div class="col-2">
+      <p><b>tipo:</b> {{ quizActual?.tipo }}</p>
+    </div>
+    <div class="col-2">
+      <p><b>Duracion: </b> {{ quizActual?.duracion }}</p>
+    </div>
+  </div>
+
+  <mat-card-content>
+    <mat-card-subtitle align="center"
+      ><b>Descripcion de la actividad</b></mat-card-subtitle
+    >
+    <p>{{ quizActual?.descripcion }}</p>
   </mat-card-content>
 
   <mat-card-content>
-    <p>Preguntas: {{ quizActual?.preguntas }}</p>
+    <mat-card-subtitle align="center"><b>Preguntas</b></mat-card-subtitle>
+    <table mat-table [dataSource]="preguntasDataSource">
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Pregunta</th>
+        <td mat-cell *matCellDef="let pregunta">{{ pregunta.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ponderacion">
+        <th mat-header-cell *matHeaderCellDef>ponderacion</th>
+        <td mat-cell *matCellDef="let Pregunta" align="end">
+          {{ Pregunta.ponderacion }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayPreguntas"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayPreguntas"></tr>
+    </table>
   </mat-card-content>
 </mat-card>

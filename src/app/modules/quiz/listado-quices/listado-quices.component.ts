@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizRestService } from '../quiz-rest.service';
 import { QuizInterface } from '../../../commons/interfaces/quiz.interface';
-import { MessageComponent } from 'src/app/commons/components/message/message.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.component';
 import { VerActividadComponent } from '../ver-actividad/ver-actividad.component';
@@ -34,6 +33,7 @@ export class ListadoQuicesComponent implements OnInit {
 
   verActividad(idActividad: number): void {
     this.dialog.open(VerActividadComponent, {
+      minWidth: '57%',
       data: {
         idActividad: idActividad,
       },

@@ -12,13 +12,18 @@
   position: relative;
 }
 
-.encabezado{
-  display: inline-block;
-}
 .contenido{
   display: inline-block;
 }
 
 .example-card{
-  width: 100%;
+  min-width: 500px;
+  max-width: 820px;
+}
+
+.mat-column-demo-position {
+  width: 36px;
+  border-right: 1px solid currentColor;
+  padding-right: 30px;
+  text-align: center;
 }
