@@ -7,10 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MessageComponent } from 'src/app/commons/components/message/message.component';
 
 const hoy = new Date();
-interface Pregunta {
-  textoPregunta: string;
-  ponderacion: number;
-}
 
 @Component({
   selector: 'app-crear-quiz',
@@ -29,8 +25,6 @@ export class CrearQuizComponent implements OnInit {
     descripcion: new FormControl('', [Validators.required]),
   });
 
-  preguntas: Pregunta[] = [{ textoPregunta: '', ponderacion: 0 }];
-
   constructor(
     private restService: QuizRestService,
     private router: Router,
@@ -48,6 +42,7 @@ export class CrearQuizComponent implements OnInit {
       duracion: this.quizForm.value.duracion!,
       tipo: this.quizForm.value.tipo!,
       descripcion: this.quizForm.value.descripcion!,
+      preguntas: <any>[],
     };
     console.log(quiz);
     // consume el api rest
@@ -65,26 +60,6 @@ export class CrearQuizComponent implements OnInit {
 
   onCancelar() {
     this.quizForm.reset();
-  }
-
-  eliminarPregunta(position: number) {
-    this.preguntas.splice(position, 1);
-  }
-
-  agregarPregunta() {
-    let index = this.preguntas.length;
-    let ultimaPregunta = this.preguntas[index - 1];
-
-    if (this.preguntas.length == 0) {
-      this.preguntas.push({ textoPregunta: '', ponderacion: 1 });
-    } else if (
-      this.preguntas[index - 1].textoPregunta == '' &&
-      this.preguntas[index - 1].ponderacion === 0
-    ) {
-      alert('para agregar otra pregunta el campo debe estar diligenciado');
-    } else {
-      this.preguntas.push({ textoPregunta: '', ponderacion: 1 });
-    }
   }
 
   openDialogOk() {

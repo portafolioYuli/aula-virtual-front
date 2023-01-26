@@ -45,6 +45,12 @@ export class ListadoQuicesComponent implements OnInit {
       .eliminarActividad(idActividad)
       .subscribe((data: QuizInterface[]) => {
         this.quicesDataSource = data;
+        this.dialog.open(MessageComponent, {
+          data: {
+            mensaje: 'se ha eliminado con exito',
+            tipo: 'success',
+          },
+        });
         this.ngOnInit();
       });
   }
