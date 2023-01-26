@@ -4,6 +4,7 @@ import { QuizInterface } from '../../../commons/interfaces/quiz.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.component';
 import { VerActividadComponent } from '../ver-actividad/ver-actividad.component';
+import { MessageComponent } from 'src/app/commons/components/message/message.component';
 
 @Component({
   selector: 'app-listado-quices',
