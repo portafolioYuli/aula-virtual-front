@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuizRoutingModule } from './quiz-routing.module';
 import { MaterialModule } from '../../commons/modules/material.module';
 import { CrearPreguntaComponent } from './crear-pregunta/crear-pregunta.component';
+import { VerActividadComponent } from './ver-actividad/ver-actividad.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -29,16 +31,17 @@ import { CrearPreguntaComponent } from './crear-pregunta/crear-pregunta.componen
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-
     QuizRoutingModule,
     MaterialModule,
+    MatCardModule,
   ],
   declarations: [
     CrearQuizComponent,
     ListadoQuicesComponent,
     CrearPreguntaComponent,
+    VerActividadComponent,
   ],
-  exports: [CrearQuizComponent, ListadoQuicesComponent],
+  exports: [CrearQuizComponent, ListadoQuicesComponent, VerActividadComponent],
   providers: [QuizRestService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
