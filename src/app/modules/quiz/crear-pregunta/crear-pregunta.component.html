@@ -1,6 +1,11 @@
 <div class="grid">
   <div class="col-12" align="right">
-    <button mat-mini-fab color="warn" type="button" (click)="cerrar()">
+    <button
+      mat-icon-button
+      color="warn"
+      (click)="cerrar()"
+      aria-label="Example icon button with a home icon"
+    >
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -42,10 +47,10 @@
             />
           </mat-form-field>
         </div>
-        <div class="col-3">
+        <div class="col-3" align="end">
           <button
             (click)="eliminarPregunta(position)"
-            mat-fab
+            mat-icon-button
             color="basic"
             aria-label="Example icon button with a delete icon"
             type="button"
