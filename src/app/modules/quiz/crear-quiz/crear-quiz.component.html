@@ -1,3 +1,133 @@
-<p>
-  crear-quiz works!
-</p>
+<div class="grid">
+  <div class="col-12" class="text-right">
+    <button mat-flat-button color="primary" routerLink="">
+      <mat-icon>undo</mat-icon>
+      regresar al listado
+    </button>
+  </div>
+</div>
+<br />
+
+<div class="grid">
+  <div class="col-12">
+    <h1 class="centrado">Crear Actividad</h1>
+  </div>
+</div>
+<div class="grid">
+  <div class="col-12">
+    <form class="formulario" [formGroup]="quizForm" (submit)="onEnviar()">
+      <div class="grid">
+        <div class="col-7">
+          <mat-form-field class="actividad">
+            <mat-label>Nombre de la actividad</mat-label>
+            <input
+              required
+              matInput
+              placeholder="Ej. Quiz Programacion"
+              formControlName="nombre"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Selec tipo de actividad</mat-label>
+            <mat-select formControlName="tipo">
+              <mat-option value="quiz">Quiz</mat-option>
+              <mat-option value="taller">Taller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha y hora de inicio</mat-label>
+            <input
+              matInput
+              type="datetime-local"
+              placeholder="start date"
+              formControlName="start"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha y hora fin</mat-label>
+            <input
+              matInput
+              type="datetime-local"
+              placeholder="end date"
+              formControlName="end"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-3">
+          <mat-form-field class="example-full-width">
+            <mat-label>Duracion de la actividad en min</mat-label>
+            <input
+              required
+              type="number"
+              minlength="2"
+              maxlength="4"
+              matInput
+              placeholder="Ej. 20"
+              formControlName="duracion"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col-12">
+          <h1 class="centrado">Descripcion</h1>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col-12">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>descripcion de la actividad</mat-label>
+            <textarea
+              matInput
+              #message
+              formControlName="descripcion"
+              maxlength="500"
+              placeholder="Ej. desarrollar los puntos ..."
+            ></textarea>
+            <mat-hint align="start"
+              ><strong>instrucciones para actividad</strong>
+            </mat-hint>
+            <mat-hint align="end">{{ message.value.length }} / 500</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <section class="botones">
+        <div class="grid">
+          <div class="col-10">
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="onCancelar()"
+              value="borar"
+              type="button"
+            >
+              cancelar
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="quizForm.invalid"
+              type="submit"
+              value="guardar"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </section>
+    </form>
+  </div>
+</div>

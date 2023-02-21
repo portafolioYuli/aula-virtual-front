@@ -1,0 +1,102 @@
+<div class="grid">
+  <div class="col-12" align="right">
+    <button
+      mat-icon-button
+      color="warn"
+      (click)="cerrar()"
+      aria-label="Example icon button with a home icon"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
+  <div class="grid">
+    <div class="col-12">
+      <h1 class="centrado">Preguntas</h1>
+    </div>
+  </div>
+  <form class="formulario" [formGroup]="preguntaForm" (submit)="onEnviar()">
+    <div
+      class="pregunta"
+      *ngFor="let pregunta of preguntas; let position = index"
+    >
+      <div class="grid">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Pregunta</mat-label>
+            <input
+              required
+              matInput
+              formControlName="nombre"
+              placeholder="Ej. ¿Con cuántos países comparte Colombia fronteras terrestres?"
+              [value]="position + ' - ' + pregunta.textoPregunta"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field class="example-full-width">
+            <mat-label>ponderacion</mat-label>
+            <input
+              formControlName="ponderacion"
+              required
+              type="number"
+              matInput
+              placeholder="Ej. 1"
+              [value]="pregunta.ponderacion"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-3" align="end">
+          <button
+            (click)="eliminarPregunta(position)"
+            mat-icon-button
+            color="basic"
+            aria-label="Example icon button with a delete icon"
+            type="button"
+          >
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-12">
+        <button
+          (click)="agregarPregunta()"
+          mat-raised-button
+          color="black"
+          type="button"
+        >
+          Agregar Pregunta
+        </button>
+      </div>
+    </div>
+
+    <section class="botones">
+      <div class="grid">
+        <div class="col-10">
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="onCancelar()"
+            value="borar"
+            type="button"
+          >
+            cancelar
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="preguntaForm.invalid"
+            type="submit"
+            value="guardar"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </section>
+  </form>
+</cdk-virtual-scroll-viewport>

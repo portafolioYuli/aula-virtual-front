@@ -1,3 +1,86 @@
-<p>
-  listado-quices works!
-</p>
+<div class="grid">
+  <div class="col-12" class="text-right">
+    <button mat-flat-button color="primary" routerLink="crear">
+      <mat-icon>add_circle</mat-icon>
+      Agregar actividad
+    </button>
+  </div>
+</div>
+<br />
+
+<div class="grid">
+  <div class="col-12">
+    <table
+      mat-table
+      [dataSource]="quicesDataSource"
+      class="mat-elevation-z3 quices-table"
+    >
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let actividad">{{ actividad.id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre Actividad</th>
+        <td mat-cell *matCellDef="let actividad">{{ actividad.nombre }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="fecha_apertura">
+        <th mat-header-cell *matHeaderCellDef>Fecha apertura</th>
+        <td mat-cell *matCellDef="let actividad">
+          {{ actividad.fecha_apertura | date : "yyyy-dd-mm hh:mm:ss" }}
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fecha_cierre">
+        <th mat-header-cell *matHeaderCellDef>Fecha cierre</th>
+        <td mat-cell *matCellDef="let actividad">
+          {{ actividad.fecha_cierre | date : "yyyy-dd-mm hh:mm:ss" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="duracion">
+        <th mat-header-cell *matHeaderCellDef>Duracion actividad</th>
+        <td mat-cell *matCellDef="let actividad" align="center">
+          {{ actividad.duracion }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef>Tipo de Actividad</th>
+        <td mat-cell *matCellDef="let actividad" align="center">
+          {{ actividad.tipo }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="numPreguntas">
+        <th mat-header-cell *matHeaderCellDef># preguntas</th>
+        <td mat-cell *matCellDef="let actividad">
+          {{ actividad.preguntas.length }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let actividad">
+          <button mat-button (click)="verActividad(actividad.id)">
+            <mat-icon color="primary">visibility</mat-icon>
+          </button>
+
+          <button mat-button (click)="createPregunta(actividad.id)">
+            <mat-icon color="accent">create</mat-icon>
+          </button>
+
+          <button mat-button (click)="deleteActividad(actividad.id)">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
